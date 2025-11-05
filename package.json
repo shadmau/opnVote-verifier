@@ -1,0 +1,45 @@
+{
+  "name": "opnvote-verifier",
+  "version": "1.0.0",
+  "description": "CLI tool to decode and verify opnVote ballots",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "decode": "tsc && node dist/decodeBallot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shadmau/opnVote-verifier.git"
+  },
+  "keywords": [
+    "opnvote",
+    "voting",
+    "ballot",
+    "verifier",
+    "decoder"
+  ],
+  "author": "j0xn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shadmau/opnVote-verifier/issues"
+  },
+  "homepage": "https://github.com/shadmau/opnVote-verifier#readme",
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@gelatonetwork/relay-sdk": "^5.6.0",
+    "bigint-crypto-utils": "^3.3.0",
+    "crypto-js": "^4.2.0",
+    "dotenv": "^17.2.3",
+    "elliptic": "^6.6.1",
+    "ethers": "^6.15.0",
+    "js-sha3": "^0.9.3",
+    "jsonwebtoken": "^9.0.2",
+    "node-forge": "^1.3.1",
+    "node-rsa": "^1.1.1",
+    "opnvote": "github:openPetition/opnVote#main:votingSystem"
+  }
+}
