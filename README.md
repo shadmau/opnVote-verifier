@@ -34,8 +34,25 @@ The tool will ask you for:
 
 ## Configuration
 
-Copy `.env.example` to `.env` to customize the IPFS gateway:
+Copy `.env.example` to `.env` to customize settings:
 
 ```bash
 cp .env.example .env
 ```
+
+Configuration options:
+
+- `IPFS_GATEWAY` - IPFS gateway URL (default: https://ipfs.io/ipfs/)
+- `VOTE_FORMAT_VERSION` - Vote format version (default: 1)
+- `NUMBER_OF_QUESTIONS` - Questions per ballot (default: 4)
+
+## Standalone Executables
+
+Build standalone executable:
+
+- `npm run compile:linux` - Linux x64
+- `npm run compile:macos` - macOS x64
+- `npm run compile:macos-arm` - macOS ARM64
+- `npm run compile:windows` - Windows x64
+
+Executables are found in `build/`
