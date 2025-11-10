@@ -78,10 +78,21 @@ export async function decodeBallot(
     encryptionType: EncryptionType.RSA,
   };
 
+  const voteFormatVersion = parseInt(
+    process.env.VOTE_FORMAT_VERSION || "1",
+    10
+  );
+  const numberOfQuestions = parseInt(
+    process.env.NUMBER_OF_QUESTIONS || "4",
+    10
+  );
+
   const votes: Vote[] = await decryptVotes(
     encryptedVotes,
     privateKey,
-    EncryptionType.RSA
+    EncryptionType.RSA,
+    voteFormatVersion,
+    numberOfQuestions
   );
 
   const result: DecodedBallot = { votes };
@@ -102,7 +113,7 @@ export async function decodeBallot(
   return result;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+async function main() {
   console.log("=== opnVote Ballot Decoder ===");
   console.log("");
 
@@ -157,4 +168,13 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     );
     process.exit(1);
   }
+}
+
+if (typeof require !== "undefined" && require.main === module) {
+  main();
+} else if (
+  typeof import.meta !== "undefined" &&
+  import.meta.url === `file://${process.argv[1]}`
+) {
+  main();
 }
