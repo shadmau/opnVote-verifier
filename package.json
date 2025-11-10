@@ -6,6 +6,12 @@
   "scripts": {
     "build": "tsc",
     "decode": "tsc && node dist/decodeBallot.js",
+    "compile": "npm run build && bun build dist/decodeBallot.js --compile --outfile opnvote-verifier",
+    "compile:linux": "npm run build && bun build dist/decodeBallot.js --compile --target=bun-linux-x64 --outfile build/opnvote-verifier-linux-x64",
+    "compile:macos": "npm run build && bun build dist/decodeBallot.js --compile --target=bun-darwin-x64 --outfile build/opnvote-verifier-macos-x64",
+    "compile:macos-arm": "npm run build && bun build dist/decodeBallot.js --compile --target=bun-darwin-arm64 --outfile build/opnvote-verifier-macos-arm64",
+    "compile:windows": "npm run build && bun build dist/decodeBallot.js --compile --target=bun-windows-x64 --outfile build/opnvote-verifier-windows-x64.exe",
+    "compile:all": "npm run build && npm run compile:linux && npm run compile:macos && npm run compile:macos-arm && npm run compile:windows",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
