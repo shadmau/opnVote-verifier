@@ -21,13 +21,12 @@ export function validateAndNormalizeHex(
   }
 
   const trimmed = input.trim();
-  const normalized = normalizeHexString(trimmed);
 
-  if (!isValidHex(normalized, false, false)) {
+  if (!isValidHex(trimmed, false, false)) {
     throw new Error(`${fieldName} is not a valid hex string`);
   }
 
-  return `0x${normalized}`;
+  return trimmed.startsWith("0x") ? trimmed : `0x${trimmed}`;
 }
 
 /**
